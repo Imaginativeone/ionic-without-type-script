@@ -33,6 +33,9 @@ import { ellipse, square, triangle } from 'ionicons/icons';
 export default {
   name: 'Tabs',
   components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
+  methods: {
+    
+  },
   setup() {
     return {
       ellipse, 

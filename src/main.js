@@ -31,6 +31,6 @@ app.component('tab-gen', {
   template: `A`
 });
 
-  router.isReady().then(() => {
+router.isReady().then(() => {
   app.mount('#app');
 });

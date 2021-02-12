@@ -12,7 +12,7 @@
         </ion-toolbar>
       </ion-header>
       <!-- <ExploreContainer name="Tab 1 page" /> -->
-      <TabGeneric name="Generic Component" />
+      w
     </ion-content>
   </ion-page>
 </template>
