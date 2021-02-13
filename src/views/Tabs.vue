@@ -96,6 +96,10 @@ export default {
               // console.log("check2", this.tabs.map((x) => x.route).join());
               // console.log('this.tabs: before', this.tabs);  // Empty array, meant for main tabs
 
+              console.log('child: this', this);
+              console.log('child: this.$router', this.$router);
+              console.log('child: this.$router.currentRoute', this.$router.currentRoute);
+              console.log('child: this.$router.currentRoute._value.fullPath', this.$router.currentRoute._value.fullPath);
               this.tabs = this.childTabs;
 
               // console.log('this.tabs: after', this.tabs);   // this.tabs filled with child tabs
@@ -104,16 +108,25 @@ export default {
           }
         } 
         else { 
-          this.tabs = this.masterTabs; 
+
+          console.log('non-child: this', this);
+          console.log('non-child: this.$router', this.$router);
+          this.tabs = this.masterTabs;
         }
     },
   },
   mounted() {
     if (
       this.childTabs
-        .map((x) => x.route)
+        .map((x) => { 
+          console.log('x.label', x.label);
+          return x.route
+        })
         .includes(this.$router.currentRoute.fullPath)
     ) {
+
+      // console.log('mounted(): ', this.$router.currentRoute.fullPath);
+
       this.tabs = this.childTabs;
     } 
     else { 
