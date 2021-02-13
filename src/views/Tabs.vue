@@ -42,6 +42,9 @@ export default {
       // console.log("new route", to);
       console.log('to', to);
 
+      console.log('this.masterTabs', this.masterTabs);
+      console.log('this.childTabs',  this.childTabs);
+
       if (this.childTabs.map((x) => { 
         
         // console.log('this.childTabs.map.x.route', x.route);
