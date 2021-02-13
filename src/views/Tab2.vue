@@ -23,6 +23,9 @@ import ExploreContainer from '@/components/ExploreContainer.vue';
 
 export default  {
   name: 'Tab2',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+    mounted(){
+    console.log('Tab 2: route',this.$router.currentRoute )
+  }
 }
 </script>

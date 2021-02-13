@@ -24,7 +24,7 @@ export default  {
   name: 'Tab3',
   components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   mounted(){
-    console.log('route',this.$router.currentRoute )
+    console.log('Tab 3: route',this.$router.currentRoute )
   }
 }
 </script>

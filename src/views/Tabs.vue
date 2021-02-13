@@ -41,10 +41,11 @@ export default {
 
       // console.log("new route", to);
       console.log('to', to);
+      // console.log('to.tab', to.tab);
 
       // Tabs
-      console.log('this.masterTabs', this.masterTabs);
-      console.log('this.childTabs',  this.childTabs);
+      // console.log('this.masterTabs', this.masterTabs);
+      // console.log('this.childTabs',  this.childTabs);
 
       // Once I identify the tab selection within the childTabs, if the label of the selected tab = "Home", then
       // reset to the masterTabs
@@ -53,7 +54,7 @@ export default {
         // console.log('this.childTabs.map.x.route', x.route);
         // console.log('to.fullPath', to.fullPath);
 
-        console.log('Within childTabs map: this.masterTabs', this.masterTabs);
+        // console.log('Within childTabs map: this.masterTabs', this.masterTabs);
         
         return x.route 
         
@@ -62,22 +63,22 @@ export default {
           // Compare the main tabs with the child tabs
           if (this.tabs.map((x) => { 
             
-            console.log('x.route', x.route);
-            console.log('x.label', x.label);
+            // console.log('x.route', x.route);
+            // console.log('x.label', x.label);
 
             return x.route 
             
           }).join() !== this.childTabs.map((x) => { 
 
-            console.log('MAIN: x.route', x.route);
-            console.log('MAIN: x.label', x.label);
+            // console.log('MAIN: x.route', x.route);
+            // console.log('MAIN: x.label', x.label);
 
             return x.route
 
           }).join()) { 
 
-            console.log('Comparison (line 70): tabs',      this.tabs     .map((x) => x.route).join());
-            console.log('Comparison (line 70): childTabs', this.childTabs.map((x) => x.route).join());
+            // console.log('Comparison (line 70): tabs',      this.tabs     .map((x) => x.route).join());
+            // console.log('Comparison (line 70): childTabs', this.childTabs.map((x) => x.route).join());
           
             this.tabs = [];
 
