@@ -50,6 +50,8 @@ export default {
         
         // console.log('this.childTabs.map.x.route', x.route);
         // console.log('to.fullPath', to.fullPath);
+
+        console.log('Within childTabs map: this.masterTabs', this.masterTabs);
         
         return x.route 
         
@@ -63,10 +65,17 @@ export default {
 
             return x.route 
             
-          }).join() !== this.childTabs.map((x) => x.route).join()) { 
+          }).join() !== this.childTabs.map((x) => { 
 
-            console.log('tabs',      this.tabs     .map((x) => x.route).join());
-            console.log('childTabs', this.childTabs.map((x) => x.route).join());
+            console.log('MAIN: x.route', x.route);
+            console.log('MAIN: x.label', x.label);
+
+            return x.route
+            
+          }).join()) { 
+
+            console.log('Comparison (line 70): tabs',      this.tabs     .map((x) => x.route).join());
+            console.log('Comparison (line 70): childTabs', this.childTabs.map((x) => x.route).join());
           
             this.tabs = [];
 
