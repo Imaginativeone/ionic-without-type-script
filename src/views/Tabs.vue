@@ -46,12 +46,20 @@ export default {
         
         // console.log('this.childTabs.map.x.route', x.route);
         // console.log('to.fullPath', to.fullPath);
+        
         return x.route 
         
         }).includes(to.fullPath)) {
 
           // Compare the main tabs with the child tabs
-          if (this.tabs.map((x) => x.route).join() !== this.childTabs.map((x) => x.route).join()) { 
+          if (this.tabs.map((x) => { 
+            
+            console.log('x.route', x.route);
+            console.log('x.label', x.label);
+
+            return x.route 
+            
+          }).join() !== this.childTabs.map((x) => x.route).join()) { 
 
             console.log('tabs',      this.tabs     .map((x) => x.route).join());
             console.log('childTabs', this.childTabs.map((x) => x.route).join());
