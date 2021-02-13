@@ -1,5 +1,6 @@
 <template>
   <div id="container">
+    <ion-button @click="tabs" color="primary">Tabs</ion-button>
     <strong>{{ name }}</strong>
     <p>TabGeneric
       <a target="_blank" 
@@ -15,7 +16,16 @@ export default {
   name: 'TabGeneric',
   props: {
     name: String
+  },
+  methods:{
+    tabs(){
+      this.$router.push({ path: '/tabs/tab1' })
+    },
+    tabs2(){
+        
+    }
   }
+
 }
 </script>
 

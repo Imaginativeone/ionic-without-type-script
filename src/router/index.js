@@ -5,7 +5,7 @@ import Tabs from '../views/Tabs.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    component: () => import('@/views/home.vue')
   },
   {
     path: '/tabs/',
@@ -18,6 +18,8 @@ const routes = [
       {
         path: 'tab1',
         component: () => import('@/views/Tab1.vue')
+        // path: 'tab1',
+        // redirect: '/tabs/tab1'
       },
       {
         path: 'tab2',
@@ -26,6 +28,18 @@ const routes = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3.vue')
+      },
+      {
+        path: 'tab4',
+        component: () => import('@/views/Tab4.vue')
+      },
+      {
+        path: 'tab5',
+        component: () => import('@/views/Tab5.vue')
+      },
+      {
+        path: 'tab6',
+        component: () => import('@/views/Tab6.vue')
       }
     ]
   }
