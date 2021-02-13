@@ -46,6 +46,8 @@ export default {
       console.log('this.masterTabs', this.masterTabs);
       console.log('this.childTabs',  this.childTabs);
 
+      // Once I identify the tab selection within the childTabs, if the label of the selected tab = "Home", then
+      // reset to the masterTabs
       if (this.childTabs.map((x) => { 
         
         // console.log('this.childTabs.map.x.route', x.route);
@@ -71,7 +73,7 @@ export default {
             console.log('MAIN: x.label', x.label);
 
             return x.route
-            
+
           }).join()) { 
 
             console.log('Comparison (line 70): tabs',      this.tabs     .map((x) => x.route).join());
