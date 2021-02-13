@@ -42,6 +42,7 @@ export default {
       // console.log("new route", to);
       console.log('to', to);
 
+      // Tabs
       console.log('this.masterTabs', this.masterTabs);
       console.log('this.childTabs',  this.childTabs);
 
