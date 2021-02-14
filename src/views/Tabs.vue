@@ -7,6 +7,7 @@
 <script>
 
 //import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
+// import { IonTabs } from '@ionic/vue';
 import { ellipse, square, triangle } from "ionicons/icons";
 import TabCollection from "./tab-collection.vue";
 
@@ -33,12 +34,38 @@ export default {
     ],
   }),
 
+  methods: {
+    testMethod() {
+      const message = 'testMethod() was run';
+      console.log('message', message);
+      return message;
+    },
+
+  //   onTabsChange(t) {
+  //     const _t = t;
+  //     console.log(_t);
+  //     let selected_tab = this.tabs.getSelected();
+  //     let tab_index = selected_tab.index;
+
+  //     console.log('tab_index', tab_index);  // should print current tab index but it prints previously selected tab index
+  //     return t;
+  //  },
+ },
+
   // Which tab is the CLICKED tab?
   // I think it's "to"
   watch: {
     
     $route(to) {
 
+      this.testMethod();
+
+      console.log('Hello');
+      console.log('this.tabs.getSelected', this.tabs.getSelected);
+      console.log('this.tabs', this.tabs);
+
+      // this.onTabsChange(to);
+      
       // console.log("new route", to);
       console.log('to', to);
       // console.log('to.tab', to.tab);
@@ -77,8 +104,8 @@ export default {
 
           }).join()) { 
 
-            // console.log('Comparison (line 70): tabs',      this.tabs     .map((x) => x.route).join());
-            // console.log('Comparison (line 70): childTabs', this.childTabs.map((x) => x.route).join());
+            console.log('Comparison (line 70): tabs',      this.tabs     .map((x) => x.route).join());
+            console.log('Comparison (line 70): childTabs', this.childTabs.map((x) => x.route).join());
           
             this.tabs = [];
 
@@ -96,10 +123,10 @@ export default {
               // console.log("check2", this.tabs.map((x) => x.route).join());
               // console.log('this.tabs: before', this.tabs);  // Empty array, meant for main tabs
 
-              console.log('child: this', this);
-              console.log('child: this.$router', this.$router);
-              console.log('child: this.$router.currentRoute', this.$router.currentRoute);
-              console.log('child: this.$router.currentRoute._value.fullPath', this.$router.currentRoute._value.fullPath);
+              // console.log('child: this', this);
+              // console.log('child: this.$router', this.$router);
+              // console.log('child: this.$router.currentRoute', this.$router.currentRoute);
+              // console.log('child: this.$router.currentRoute._value.fullPath', this.$router.currentRoute._value.fullPath);
               this.tabs = this.childTabs;
 
               // console.log('this.tabs: after', this.tabs);   // this.tabs filled with child tabs
@@ -138,7 +165,8 @@ export default {
     }
   },
   components: {
-    TabCollection,
+    TabCollection, 
+    // IonTabs,
     // , IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPageTabCollection
   },
   setup() {
