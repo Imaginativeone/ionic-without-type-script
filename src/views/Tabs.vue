@@ -146,7 +146,7 @@ export default {
     if (
       this.childTabs
         .map((x) => { 
-          console.log('x.label', x.label);
+          // console.log('x.label', x.label);
           return x.route
         })
         .includes(this.$router.currentRoute.fullPath)
