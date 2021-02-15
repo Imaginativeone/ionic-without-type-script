@@ -18,8 +18,6 @@ const routes = [
       {
         path: 'tab1',
         component: () => import('@/views/Tab1.vue')
-        // path: 'tab1',
-        // redirect: '/tabs/tab1'
       },
       {
         path: 'tab2',

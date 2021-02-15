@@ -5,169 +5,70 @@
 </template>
 
 <script>
-
 //import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage } from '@ionic/vue';
-// import { IonTabs } from '@ionic/vue';
 import { ellipse, square, triangle } from "ionicons/icons";
 import TabCollection from "./tab-collection.vue";
-
 export default {
-
   name: "Tabs",
   data: () => ({
-
-    tabs: [
-      // { path: "/", redirect: "/tabs/tab1" }
-    ],
-
-    childTabs: [  
+    tabs: [],
+    childTabs: [
+      { tab: "tab1", icon: ellipse, route: "/tabs/tab1", label: "Home" },
       { tab: "tab3", icon: triangle, route: "/tabs/tab3", label: "Tab 3" },
-      { tab: "tab4", icon: ellipse,  route: "/tabs/tab4", label: "Tab 4" },
-      { tab: "tab5", icon: square,   route: "/tabs/tab5", label: "Tab 5" },
+      { tab: "tab4", icon: ellipse, route: "/tabs/tab4", label: "Tab 4" },
+      { tab: "tab5", icon: square, route: "/tabs/tab5", label: "Tab 5" },
       { tab: "tab6", icon: triangle, route: "/tabs/tab6", label: "Tab 6" },
     ],
-    
     masterTabs: [
-      { tab: "tab1", icon: ellipse,  route: "/tabs/tab1", label: "Tab 1" },
-      { tab: "tab2", icon: square,   route: "/tabs/tab2", label: "Tab 2" },
+      { tab: "tab1", icon: ellipse, route: "/tabs/tab1", label: "Tab 1" },
+      { tab: "tab2", icon: square, route: "/tabs/tab2", label: "Tab 2" },
       { tab: "tab3", icon: triangle, route: "/tabs/tab3", label: "Tab 3" },
     ],
   }),
-
-  methods: {
-    testMethod() {
-      const message = 'testMethod() was run';
-      console.log('message', message);
-      return message;
-    },
-
-  //   onTabsChange(t) {
-  //     const _t = t;
-  //     console.log(_t);
-  //     let selected_tab = this.tabs.getSelected();
-  //     let tab_index = selected_tab.index;
-
-  //     console.log('tab_index', tab_index);  // should print current tab index but it prints previously selected tab index
-  //     return t;
-  //  },
- },
-
-  // Which tab is the CLICKED tab?
-  // I think it's "to"
   watch: {
-    
     $route(to) {
+      //console.log("new route", to);
 
-      this.testMethod();
+      if (
+        this.childTabs
+          .filter((x) => x.tab != "tab1")
+          .map((x) => x.route)
+          .includes(to.fullPath)
+      ) {
+        if (
+          this.tabs.map((x) => x.route).join() !==
+          this.childTabs.map((x) => x.route).join()
+        ) {
+          this.tabs = [];
+          setTimeout(() => {
+            console.log("check1", this.childTabs.map((x) => x.route).join());
+            console.log("check2", this.tabs.map((x) => x.route).join());
 
-      console.log('Hello');
-      console.log('this.tabs.getSelected', this.tabs.getSelected);
-      console.log('this.tabs', this.tabs);
-
-      // this.onTabsChange(to);
-      
-      // console.log("new route", to);
-      console.log('to', to);
-      // console.log('to.tab', to.tab);
-
-      // Tabs
-      // console.log('this.masterTabs', this.masterTabs);
-      // console.log('this.childTabs',  this.childTabs);
-
-      // Once I identify the tab selection within the childTabs, if the label of the selected tab = "Home", then
-      // reset to the masterTabs
-      if (this.childTabs.map((x) => { 
-        
-        // console.log('this.childTabs.map.x.route', x.route);
-        // console.log('to.fullPath', to.fullPath);
-
-        // console.log('Within childTabs map: this.masterTabs', this.masterTabs);
-        
-        return x.route 
-        
-        }).includes(to.fullPath)) {
-
-          // Compare the main tabs with the child tabs
-          if (this.tabs.map((x) => { 
-            
-            // console.log('x.route', x.route);
-            // console.log('x.label', x.label);
-
-            return x.route 
-            
-          }).join() !== this.childTabs.map((x) => { 
-
-            // console.log('MAIN: x.route', x.route);
-            // console.log('MAIN: x.label', x.label);
-
-            return x.route
-
-          }).join()) { 
-
-            console.log('Comparison (line 70): tabs',      this.tabs     .map((x) => x.route).join());
-            console.log('Comparison (line 70): childTabs', this.childTabs.map((x) => x.route).join());
-          
-            this.tabs = [];
-
-            setTimeout(() => {
-
-              console.log("check1", this.childTabs.map((x) => { 
-                
-                // console.log('x', x);              // Proxies for tabs
-                // console.log('x.route', x.route);  // Isolate the tab route
-                
-                return x.route
-
-              }).join());
-
-              // console.log("check2", this.tabs.map((x) => x.route).join());
-              // console.log('this.tabs: before', this.tabs);  // Empty array, meant for main tabs
-
-              // console.log('child: this', this);
-              // console.log('child: this.$router', this.$router);
-              // console.log('child: this.$router.currentRoute', this.$router.currentRoute);
-              // console.log('child: this.$router.currentRoute._value.fullPath', this.$router.currentRoute._value.fullPath);
-              this.tabs = this.childTabs;
-
-              // console.log('this.tabs: after', this.tabs);   // this.tabs filled with child tabs
-
-            }, 50);
-          }
-        } 
-        else { 
-
-          console.log('non-child: this', this);
-          console.log('non-child: this.$router', this.$router);
-          this.tabs = this.masterTabs;
+            this.tabs = this.childTabs;
+          }, 50);
         }
+      } else if(this.masterTabs.map(x=>x.route).includes(to.fullPath)) {        
+          this.tabs = [];
+          setTimeout(() => {
+            this.tabs = this.masterTabs;
+          }, 50);        
+      }else {
+        this.tab = [];
+      }
     },
   },
   mounted() {
     if (
       this.childTabs
-        .map((x) => { 
-          // console.log('x.label', x.label);
-          return x.route
-        })
+        .map((x) => x.route)
         .includes(this.$router.currentRoute.fullPath)
     ) {
-
-      // console.log('mounted(): ', this.$router.currentRoute.fullPath);
-
       this.tabs = this.childTabs;
-    } 
-    else { 
-
-      // console.log('this.tabs', this.tabs);
-      // console.log('this.masterTabs', this.masterTabs);
-
-      this.tabs = this.masterTabs;
-    }
+    } else this.tabs = this.masterTabs;
   },
   components: {
-    TabCollection, 
-    // IonTabs,
-    // , IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPageTabCollection
+    TabCollection,
+    //,IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPageTabCollection
   },
   setup() {
     return {

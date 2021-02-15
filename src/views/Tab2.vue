@@ -11,6 +11,7 @@
           <ion-title size="large">Tab 2</ion-title>
         </ion-toolbar>
       </ion-header>
+      
       <ExploreContainer name="Tab 2 page" />
     </ion-content>
   </ion-page>
@@ -22,9 +23,6 @@ import ExploreContainer from '@/components/ExploreContainer.vue';
 
 export default  {
   name: 'Tab2',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
-    mounted(){
-    console.log('Tab 2: route',this.$router.currentRoute )
-  }
+  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
 }
 </script>

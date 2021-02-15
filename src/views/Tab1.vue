@@ -27,10 +27,6 @@ export default  {
   components: { 
     // ExploreContainer, 
     TabGeneric, 
-    IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
-  mounted(){
-    console.log('Tab 1: route',this.$router.currentRoute )
-  }
-
+    IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
 }
 </script>
